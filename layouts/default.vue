@@ -6,7 +6,9 @@
                 <v-toolbar color="grey-lighten-4" density="compact">
                     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-                    <v-toolbar-title>Title</v-toolbar-title>
+                    <v-toolbar-title> Rolli
+                    </v-toolbar-title>
+                    
 
                     <v-spacer></v-spacer>
 
@@ -14,12 +16,12 @@
                         <v-icon>mdi-magnify</v-icon>
                     </v-btn>
 
-                    <v-btn icon>
-                        <v-icon>mdi-heart</v-icon>
+                    <v-btn @click="moveLink('homePage')" >
+                        HomePage
                     </v-btn>
 
-                    <v-btn icon>
-                        <v-icon>mdi-dots-vertical</v-icon>
+                    <v-btn @click="moveLink('profile')">
+                        Profile
                     </v-btn>
                 </v-toolbar>
             </v-card>
@@ -28,3 +30,15 @@
         <slot></slot>
     </div>
 </template>
+<script setup lang="ts">
+function moveLink(data) {
+    if (data=='homePage'){
+        return navigateTo("/");
+    }
+    if (data=='profile'){
+        return navigateTo("/profile");
+    }
+    
+    
+}
+</script>

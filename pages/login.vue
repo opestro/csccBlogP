@@ -23,7 +23,7 @@ const userLogin = {
 }
 function loginv() {
 
-    login({ email: userLogin.email, password: userLogin.password }).then((data) => { console.log(data) });
+    login({ email: userLogin.email, password: userLogin.password }).then((data) => { console.log(data.user.id) });
 
 }
 </script>

@@ -6,6 +6,12 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate'],
+      },
+    ],
     "nuxt-directus",
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
@@ -24,7 +30,10 @@ export default defineNuxtConfig({
   },
   directus: {
     autoFetch: true,
-    url: "http://localhost:32769",
+    url: "http://localhost:32768",
     devtools: true
-  }
+  },
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
 })

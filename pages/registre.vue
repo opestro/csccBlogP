@@ -3,13 +3,15 @@
         Login page
         <v-container align="center" justify="center">
             <v-card align="start " class="pa-2" max-width="700px">
-                <v-text-field v-model="userLogin.fullName" label="Full name"></v-text-field>
-                <v-text-field v-model="userLogin.userName" label="@User Name"></v-text-field>
-                <v-text-field v-model="userLogin.email" type="email" label="E-mail"></v-text-field>
-                <v-text-field v-model="userLogin.password" type="password" label="Password"></v-text-field>
-                <v-btn class="me-4" @click="loginv()">
-                    submit
-                </v-btn>
+                <v-form>
+                    <v-text-field v-model="fullName" label="Full name"></v-text-field>
+                    <v-text-field v-model="userName" label="@UserName"></v-text-field>
+                    <v-text-field v-model="email" type="email" label="E-mail"></v-text-field>
+                    <v-text-field v-model="password" type="password" label="Password"></v-text-field>
+                    <v-btn class="me-4" @click="loginv()">
+                        submit
+                    </v-btn>
+                </v-form>
             </v-card>
         </v-container>
     </div>
@@ -19,28 +21,35 @@ definePageMeta({
     middleware: ["is-auth"]
 })
 const { createUser } = useDirectusAuth();
+const { login } = useDirectusAuth();
 const { createItems } = useDirectusItems();
-const userLogin = {
-    email: '',
-    password: '',
-    fullName: '',
-    userName: '',
-}
-
+const user = useDirectusUser();
+const fullName = ref('')
+const password = ref('')
+const userName = ref('')
+const email = ref('')
 
 async function loginv() {
 
     try {
-         await createUser({ email: userLogin.email, password: userLogin.password }).then(async (data) => {
-            console.log(data)
-        const newUserProfile= [{
-            email: userLogin.email,
-            fullName: userLogin.fullName,
-            userName: userLogin.userName
-        }]
-        console.log(newUserProfile)
-        await createItems({ collection: "User",  items: newUserProfile }).then((data) => { console.log(data) }).catch((err) => { console.log(err) });
-           });
+        await createUser({ email: email.value, password: password.value })
+            .then(async () => {
+                await login({ email: email.value, password: password.value })
+                    .then(async (userData) => {
+                        console.log('user Data ' + userData.user.id)
+                        const newUserProfile = [{
+                            uid: userData.user.id,
+                            email: email.value,
+                            fullName: fullName.value,
+                            userName: userName.value
+                        }]
+                        console.log(newUserProfile)
+                        await createItems({ collection: "User", items: newUserProfile })
+                            .then((data) => { console.log(data) }).catch((err) => { console.log(err) });s
+                    })
+
+
+            });
     } catch (e) { }
 } 
 </script>
