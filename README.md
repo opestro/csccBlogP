@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# CSCC Blog Project Using NUXT3 and DIRECTUS
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Look at the [Directus Offecial Page ](https://directus.io) to learn more.
+Nuxt-Directus Plugin/Package Documentation [Nuxt Directus ](https://www.nuxt-directus.site/) to learn more.
 
 ## Setup
 
