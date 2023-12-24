@@ -38,14 +38,16 @@ const profilePicture = ref('')
 // List of functions
 //################################
 // Update function
-const test = {
-            storage: 'pictures', filename_download: 'pic'
-        }
+const imageUpload = new FormData();
+const storage = 'pictures'
+const filename_download = 'pic'
+imageUpload.append('storage', 'pictures')
+imageUpload.append('filename_download', 'pic')
+//imageUpload.append(profilePicture.value)
+console.log(imageUpload)
 async function updateData() {
     try {
-        profilePicture.value[0]['storage'] = 'pictures';
-        profilePicture.value[0]['filename_download'] = 'pic';
-        console.log( profilePicture.value)
+
         await updateItem({
             collection: "User",
             id: userProfile.profileDetails.id,
@@ -54,7 +56,7 @@ async function updateData() {
                 skills: skills._rawValue,
                 levelOfStudy: levelOfStudy._rawValue,
                 bio: bio.value,
-                profilePicture: profilePicture.value[0]
+                profilePicture: imageUpload
             },
         }).then((data) => {
             console.log(data)
