@@ -45,30 +45,32 @@ async function updateData() {
     //################################
     // Image Upload
     //################################
-    await client.request(uploadFiles(imageUpload)).then(async (imageData) => {
-        try {
-            //################################
-            // Update Profile data
-            //################################
-            await updateItem({
-                collection: "User",
-                id: userProfile.profileDetails.id,
-                item: {
-                    fullName: fullName.value,
-                    skills: skills._rawValue,
-                    levelOfStudy: levelOfStudy._rawValue,
-                    bio: bio.value,
-                    profilePicture: imageData
-                },
-            }).then((data) => {
-                console.log(data)
-            }).catch((err) => {
-                console.log(err)
-            });
-        } catch (e) { }
-    }).catch((err) => {
-        console.log(err)
-    });
+    await client.request(uploadFiles(imageUpload))
+        //################################
+        // Update Profile data
+        //################################
+        .then(async (imageData) => {
+            try {
+
+                await updateItem({
+                    collection: "User",
+                    id: userProfile.profileDetails.id,
+                    item: {
+                        fullName: fullName.value,
+                        skills: skills._rawValue,
+                        levelOfStudy: levelOfStudy._rawValue,
+                        bio: bio.value,
+                        profilePicture: imageData
+                    },
+                }).then((data) => {
+                    console.log(data)
+                }).catch((err) => {
+                    console.log(err)
+                });
+            } catch (e) { }
+        }).catch((err) => {
+            console.log(err)
+        });
     /* 
   */
 }
