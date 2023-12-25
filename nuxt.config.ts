@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   },
   directus: {
     autoFetch: true,
-    url: "http://localhost:32769",
+    url: "http://localhost:32768",
     devtools: true
   },
   pinia: {

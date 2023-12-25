@@ -18,6 +18,7 @@
     "vuetify": "^3.4.8"
   },
   "dependencies": {
+    "@directus/sdk": "^14.0.0",
     "@mdi/font": "^7.3.67",
     "@pinia/nuxt": "^0.5.1",
     "nuxt-directus": "^5.6.0",

@@ -3,12 +3,12 @@
         <v-container>
             <v-row align="center" justify="center">
                 <v-col cols="auto"  >
-                    <v-card class="mx-auto" max-width="344" :title="userProfile.profileDetails.fullName" subtitle="Web developer Expert"
-                        :prepend-avatar="userProfile.image">
-                        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</v-card-text>
+                    <v-card class="mx-auto" max-width="344" :title="userProfile.profileDetails.fullName" :subtitle="userProfile.profileDetails.bio"
+                        :prepend-avatar="img(userProfile.profileDetails.profilePicture)">
+                        <v-card-text>What are you thinking!</v-card-text>
                     </v-card>
                     <div align="end" class="my-2">
-                        <v-btn  color="info">7aja New</v-btn>
+                        <v-btn  color="info">Lets create!</v-btn>
                     </div>
                    
                 </v-col>
@@ -20,4 +20,5 @@
 <script setup>
 const userProfile = useProfileStore()
 console.log(userProfile.profileDetails)
+const { getThumbnail: img } = useDirectusFiles();
 </script>
