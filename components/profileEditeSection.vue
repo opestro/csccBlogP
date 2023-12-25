@@ -21,7 +21,7 @@
 <script setup>
 // Store using Pinia
 import { createDirectus, rest, uploadFiles } from '@directus/sdk'
-const client = createDirectus('http://localhost:32768').with(rest());
+const client = createDirectus('http://localhost:8055').with(rest());
 const { updateItem } = useDirectusItems();
 const userProfile = useProfileStore()
 console.log(userProfile.profileDetails)
