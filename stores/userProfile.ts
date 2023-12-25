@@ -12,7 +12,7 @@ export const useProfileStore = defineStore("userProfile", {
             collection: "User",
             params: {
               filter: {
-                uid: {
+                id: {
                   _eq: data.value.id,
                 },
               },

@@ -38,7 +38,7 @@ async function loginv() {
                     .then(async (userData) => {
                         console.log('user Data ' + userData.user.id)
                         const newUserProfile = [{
-                            uid: userData.user.id,
+                            id: userData.user.id,
                             email: email.value,
                             fullName: fullName.value,
                             userName: userName.value
