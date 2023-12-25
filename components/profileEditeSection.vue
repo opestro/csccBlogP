@@ -19,10 +19,10 @@
     </div>
 </template>
 <script setup>
-// Store using Pinia
 import { createDirectus, rest, uploadFiles } from '@directus/sdk'
 const client = createDirectus('http://localhost:8055').with(rest());
 const { updateItem } = useDirectusItems();
+// Store using Pinia
 const userProfile = useProfileStore()
 console.log(userProfile.profileDetails)
 //################################
