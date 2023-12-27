@@ -1,6 +1,6 @@
 export const useProfileStore = defineStore("userProfile", {
   state: () => ({
-    profileDetails: "test",
+    profileDetails: "null",
   }),
   actions: {
     async getUser() {
@@ -19,7 +19,7 @@ export const useProfileStore = defineStore("userProfile", {
             },
           });
           this.profileDetails = getDetails[0];
-          console.log("ss");
+          console.log(this.profileDetails);
         } catch (e) {}
       });
     },

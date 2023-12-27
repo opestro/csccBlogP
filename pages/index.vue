@@ -8,7 +8,7 @@
 <script setup lang="ts">
 
 definePageMeta({
-  middleware: ["auth","get-user-data"]
+ // middleware: ["auth","get-user-data"]
 });
 onMounted(async () => {
 

@@ -28,15 +28,16 @@ const fullName = ref('')
 const password = ref('')
 const userName = ref('')
 const email = ref('')
+const role = ref('2913b479-8220-4b06-b36d-54d32b92427d')
 
 async function loginv() {
 
     try {
-        await createUser({ email: email.value, password: password.value })
+        await createUser({ email: email.value, password: password.value , role : role.value })
             .then(async () => {
                 await login({ email: email.value, password: password.value })
                     .then(async (userData) => {
-                        console.log('user Data ' + userData.user.id)
+                        console.log('user Data ' + userData)
                         const newUserProfile = [{
                             id: userData.user.id,
                             email: email.value,
@@ -49,7 +50,7 @@ async function loginv() {
                     })
 
 
-            });
+            }).catch((err) => { console.log(err)});
     } catch (e) { }
 } 
 </script>
